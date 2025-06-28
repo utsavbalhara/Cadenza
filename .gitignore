@@ -18,3 +18,7 @@ Cadenza/Assets.xcassets/AppIcon.appiconset/Icon-macOS-Default-256x256@1x.png
 Cadenza/Assets.xcassets/AppIcon.appiconset/Icon-macOS-Default-512x512@1x 1.png
 Cadenza/Assets.xcassets/AppIcon.appiconset/Icon-macOS-Default-512x512@1x.png
 Cadenza/Assets.xcassets/AppIcon.appiconset/Icon-macOS-Default-1024x1024@1x.png
+Cadenza/cadenza.icon/icon.json
+.gitignore
+Cadenza/cadenza.icon/Assets/Ellipse 3.png
+Cadenza/cadenza.icon/Assets/Ellipse 1.png
