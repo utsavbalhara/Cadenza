@@ -1,11 +1,29 @@
+//MainView.swift
+
 import SwiftUI
 
 struct MainView: View {
+    @StateObject private var navigationStore = NavigationStore()
+    
+    // 1. Add this @State variable to own the navigation selection.
+    //    It must be optional to work reliably with List(selection:).
+    @State private var selection: SidebarItem? = .today
+    
     var body: some View {
         NavigationSplitView {
-            SidebarView()
+            // 2. Pass a binding to the selection state into the Sidebar.
+            SidebarView(selection: $selection)
+                .environmentObject(navigationStore)
         } content: {
             HabitsView()
+                .environmentObject(navigationStore)
+                // 3. When the selection from the sidebar changes, update the
+                //    central data store. This triggers the data filtering.
+                .onChange(of: selection) { _, newSelection in
+                    if let newSelection {
+                        navigationStore.selection = newSelection
+                    }
+                }
         } detail: {
             DetailView()
         }

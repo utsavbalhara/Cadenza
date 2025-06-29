@@ -1,3 +1,5 @@
+//HabitCard.swift
+
 import SwiftUI
 
 struct HabitCard: View {
@@ -6,39 +8,45 @@ struct HabitCard: View {
     
     var body: some View {
         HStack(alignment: .center) {
-            // Left side content
-            VStack(alignment: .leading, spacing: 1.2) {
-                // Habit name - top left
+            // Left: Streak component
+            VStack(alignment: .leading, spacing: 0) {
+                // Streak number and flame
+                HStack(alignment: .center, spacing: 4) {
+                    Text("\(habit.streak)")
+                        .font(.system(size: 22, weight: .bold, design: .default))
+                    Image(systemName: "flame.fill")
+                        .font(.system(size: 14, weight: .regular, design: .default))
+                        .foregroundColor(.blue.opacity(isCompleted ? 1.0 : 0.4))
+                }
+                
+                // "DAYS" text
+                Text("DAYS")
+                    .font(.system(size: 8, weight: .regular))
+                    .textCase(.uppercase)
+                    .foregroundColor(.primary.opacity(0.6))
+            }
+            .frame(height: 36, alignment: .topLeading)
+            
+            // Center: VStack with habit name at bottom
+            VStack(alignment: .leading) {
+                
+                Spacer() 
+                
+//                Rectangle()
+//                    .fill(.clear)
+//                    .frame(height: 20)
+                
+                // Habit name at bottom
                 Text(habit.name)
-                    .font(.system(size: 17, weight: .bold, design: .default))
+                    .font(.headline)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Spacer()
-                
-                // Streak component - bottom left
-                VStack(alignment: .leading, spacing: 0) {
-                    // Streak number and flame
-                    HStack(alignment: .center, spacing: 4) {
-                        Text("\(habit.streak)")
-                            .font(.system(size: 22, weight: .bold, design: .default))
-                        Image(systemName: "flame.fill")
-                            .font(.system(size: 14, weight: .regular, design: .default))
-                            .foregroundColor(.blue.opacity(isCompleted ? 1.0 : 0.4))
-                    }
-                    
-                    // "DAYS" text
-                    Text("DAYS")
-                        .font(.system(size: 8, weight: .regular))
-                        .textCase(.uppercase)
-                        .foregroundColor(.primary.opacity(0.6))
-
-                }
-                .frame(height: 36, alignment: .topLeading)
+                Rectangle()
+                    .fill(.clear)
+                    .frame(height: 0)
             }
             
-            Spacer()
-            
-            // Right side - checkmark
+            // Right: Checkmark
             Button(action: {
                 withAnimation(.none) {
                     isCompleted.toggle()
@@ -51,13 +59,14 @@ struct HabitCard: View {
             .buttonStyle(.plain)
         }
         .padding(16)
-        .frame(width: 377, height: 96)
-        .background(isCompleted ? .blue.opacity(0.1) : .clear)
+        .frame(height: 70)
+        .frame(maxWidth: .infinity)
+        .background(isCompleted ? .blue.opacity(0.1) : .gray.opacity(0.02))
         .overlay(
-            RoundedRectangle(cornerRadius: 22)
-                .stroke(isCompleted ? .clear : Color.secondary.opacity(0.2), lineWidth: 1)
+            RoundedRectangle(cornerRadius: 20)
+                .stroke(isCompleted ? Color.blue.opacity(0.05) : Color.secondary.opacity(0.1), lineWidth: 2.5)
         )
-        .clipShape(RoundedRectangle(cornerRadius: 22))
+        .clipShape(RoundedRectangle(cornerRadius: 20))
     }
 }
 
