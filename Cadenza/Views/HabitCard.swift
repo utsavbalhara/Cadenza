@@ -40,6 +40,8 @@ struct HabitCard: View {
                 Text(habit.name)
                     .font(.headline)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                Spacer()
+
                 
                 Rectangle()
                     .fill(.clear)

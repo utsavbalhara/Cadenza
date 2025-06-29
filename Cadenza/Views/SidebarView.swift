@@ -62,7 +62,9 @@ struct SidebarView: View {
                         Text("Today")
                     } icon: {
                         Image(systemName: "sun.max")
-                            .foregroundColor(.blue)
+                        #if !os(macOS)
+                        .foregroundColor(.blue)
+                        #endif
                     }
                     
                     Spacer()
@@ -77,8 +79,10 @@ struct SidebarView: View {
                     Label {
                         Text("All")
                     } icon: {
-                        Image(systemName: "tray.full")
-                            .foregroundColor(.blue)
+                        Image(systemName: "tray")
+                        #if !os(macOS)
+                        .foregroundColor(.blue)
+                        #endif
                     }
                     
                     Spacer()
@@ -96,7 +100,9 @@ struct SidebarView: View {
                         Text("Daily Habits")
                     } icon: {
                         Image(systemName: "clock")
-                            .foregroundColor(.blue)
+                        #if !os(macOS)
+                        .foregroundColor(.blue)
+                        #endif
                     }
                     
                     Spacer()
@@ -112,7 +118,9 @@ struct SidebarView: View {
                         Text("Weekly Habits")
                     } icon: {
                         Image(systemName: "7.circle")
-                            .foregroundColor(.blue)
+                        #if !os(macOS)
+                        .foregroundColor(.blue)
+                        #endif
                     }
                     
                     Spacer()
@@ -128,7 +136,9 @@ struct SidebarView: View {
                         Text("Monthly Habits")
                     } icon: {
                         Image(systemName: "calendar")
-                            .foregroundColor(.blue)
+                        #if !os(macOS)
+                        .foregroundColor(.blue)
+                        #endif
                     }
                     
                     Spacer()
@@ -147,7 +157,9 @@ struct SidebarView: View {
                             Text(category.name)
                         } icon: {
                             Image(systemName: category.icon)
-                                .foregroundColor(.blue)
+                            #if !os(macOS)
+                            .foregroundColor(.blue)
+                            #endif
                         }
                         
                         Spacer()
