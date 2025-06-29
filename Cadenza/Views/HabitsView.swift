@@ -2,12 +2,15 @@ import SwiftUI
 
 struct HabitsView: View {
     var body: some View {
-        List {
-            Text("Content Item 1")
-            Text("Content Item 2")
-            Text("Content Item 3")
+        ScrollView {
+            VStack(spacing: 12) {
+                ForEach(Habit.sampleHabits) { habit in
+                    HabitCard(habit: habit)
+                }
+            }
+            .padding()
         }
-        .navigationTitle("Content")
+        .navigationTitle("Habits")
     }
 }
 
