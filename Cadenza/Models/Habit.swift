@@ -34,7 +34,7 @@ struct Habit: Identifiable, Hashable {
         Habit(
             name: "Drink 8 glasses of water",
             category: Category.sampleCategories[0], // Health
-            entries: generateSampleEntries(days: 10, completedCount: 7)
+            entries: generateSampleEntries(days: 10, completedCount: 10)
         ),
         Habit(
             name: "Exercise for 30 minutes",
